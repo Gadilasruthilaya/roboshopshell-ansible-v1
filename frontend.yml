@@ -2,9 +2,9 @@
   hosts: all
   become: yes
   tasks:
-    - name: Installing nginx
+    - name: Installing ngnix
       ansible.builtin.yum:
-        name: nginx
+        name: ngnix
         state: latest
     
     - name: remove directory
@@ -32,11 +32,10 @@
       ansible.builtin.service:
         name: ngnix
         state: restarted
-        enabled: yes
         
-    # - name: Enabling  the nginx server
-    #   ansible.builtin.service:
-    #     name: ngnix
-    #     enabled: yes
+     - name: Enabling  the nginx server
+       ansible.builtin.service:
+         name: ngnix
+         enabled: yes
 
     
