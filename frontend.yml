@@ -33,9 +33,9 @@
         name: ngnix
         state: restarted
         
-     - name: Enabling  the nginx server
-       ansible.builtin.service:
-         name: ngnix
-         enabled: yes
+    - name: Enabling  the nginx server
+      ansible.builtin.service:
+        name: ngnix
+        enabled: yes
 
     
