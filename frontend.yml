@@ -2,13 +2,13 @@
   hosts: all
   become: yes
   tasks:
-   - name: Installing nginx
-     ansible.builtin.yum:
+    - name: Installing nginx
+      ansible.builtin.yum:
         name: nginx
         state: latest
     
-   - name: remove directory
-     ansible.builtin.file:
+    - name: remove directory
+      ansible.builtin.file:
         path: /usr/share/nginx/html
         state: absent
 
