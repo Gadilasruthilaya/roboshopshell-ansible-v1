@@ -1,0 +1,51 @@
+- name: configuring nodejs
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+- name: Installing nodejs
+  ansible.builtin.yum:
+    name: nodejs
+    state: latest
+
+- name: Include nodejs
+  ansible.builtin.import_tasks:
+    file: app_presetup.yaml
+
+- name: Install nodejs dependencies
+  ansible.builtin.shell: npm install
+  args:
+    chdir: /app
+
+- name: Include systemd_setup
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yaml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# nodejs(){
+
+#   echo -e " ${color} configuring nodejs ${no_color}"
+#   curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${file_path}
+
+#   echo -e " ${color} Installing nodejs ${no_color}"
+#   yum install nodejs -y &>>${file_path}
+
+#   app_presetup
+
+#   echo -e " ${color} Install nodejs dependencies ${no_color}"
+#   npm install &>>${file_path}
+
+#   systemd_setup
+
+# }

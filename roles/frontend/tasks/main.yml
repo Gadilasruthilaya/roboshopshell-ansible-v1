@@ -1,8 +1,4 @@
-- name: setup frontend
-  hosts: all
-  become: yes
-  tasks:
-    - name: Installing nginx
+ - name: Installing nginx
       ansible.builtin.yum:
         name: nginx
         state: latest
@@ -37,5 +33,3 @@
       ansible.builtin.service:
         name: nginx
         enabled: yes
-
-    
