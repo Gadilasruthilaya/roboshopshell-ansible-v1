@@ -8,7 +8,7 @@
 
 - name: Include app_presetup
   ansible.builtin.import_tasks:
-    file: app_presetup.yaml
+    file: app_presetup.yml
 
 - name: Install nodejs dependencies
   ansible.builtin.shell: npm install
@@ -17,7 +17,7 @@
 
 - name: Include systemd_setup
   ansible.builtin.import_tasks:
-    file: systemd_setup.yaml
+    file: systemd_setup.yml
 
 
 
