@@ -13,4 +13,4 @@
 
 
 - name: Load schema
-  ansible.builtin.shell:  mongo --host mongodb-dev.devopspractice.store </$app_path/schema/{{ component }}.js
+  ansible.builtin.shell:  mongo --host mongodb-dev.devopspractice.store </app/schema/{{ component }}.js
