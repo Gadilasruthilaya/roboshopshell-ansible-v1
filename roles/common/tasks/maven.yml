@@ -1,0 +1,40 @@
+#  echo -e "${color} Install Maven ${no_color}"
+#   yum install maven -y &>>${file_path}
+#   start_check $?
+
+
+#   echo -e "${color} Download maven depedencies${no_color}"
+#   mvn clean package &>>${file_path}
+#   mv target/${component}-1.0.jar ${component}.jar &>>${file_path}
+#   start_check $?
+#   app_presetup
+#   systemd_setup
+
+#   mysql_schema_setup
+
+
+- name: Installing nodejs
+  ansible.builtin.yum:
+    name: maven
+    state: installed
+
+- name: app_presetup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: app_presetup.yml
+
+
+- name: Download maven depedencies
+  ansible.builtin.shell: mvn clean package ; mv target/{{ component }}-1.0.jar {{ component }}.jar
+  args:
+    chdir: /app
+
+- name: mysql_schema_setup
+  ansible.builtin.import_role:
+    name: common
+    tasks_from: mysql_schema_setup.yml
+
+ - name: systemd_setup
+   ansible.builtin.import_role:
+      name: common
+      tasks_from: systemd_setup.yml   

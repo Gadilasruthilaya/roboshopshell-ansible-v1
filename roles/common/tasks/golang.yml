@@ -1,0 +1,31 @@
+# echo -e "${color}  Install golang ${no_color}"
+#  yum install golang -y &>>${file_path}
+#  start_check $?
+
+#  app_presetup
+
+#  echo -e "${color} download dependencies and build software ${no_color}"
+#  cd $app_path
+#  go mod init dispatch &>>${file_path}
+#  go get &>>/tmp/roboshop.log
+#  go build &>>/tmp/roboshop.log
+#  start_check $?
+#  systemd_setup
+
+- name: Install golang
+  ansible.builtin.yum:
+    name: golang
+    state: latest
+
+- name: Include app_presetup
+  ansible.builtin.import_tasks:
+    file: app_presetup.yml
+
+- name: download dependencies and build software
+  ansible.builtin.shell: go mod init dispatch ; go get ; go build
+  args:
+    chdir: /app
+
+- name: Include systemd_setup
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml

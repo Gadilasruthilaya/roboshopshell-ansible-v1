@@ -1,0 +1,32 @@
+# echo -e "${color} Install python ${no_color}"
+#  yum install python36 gcc python3-devel -y &>>${file_path}
+#  start_check $?
+
+#  app_presetup
+
+#  echo -e "${color} Install python dependencies ${no_color}"
+#  cd $app_path
+#  pip3.6 install -r requirements.txt &>>${file_path}
+#  start_check $?
+#  systemd_setup
+
+- name: Install python
+  ansible.builtin.yum:
+    name: 
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Include app_presetup
+  ansible.builtin.import_tasks:
+    file: app_presetup.yml
+
+- name: Install python dependencies
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
+
+- name: Include systemd_setup
+  ansible.builtin.import_tasks:
+    file: systemd_setup.yml
