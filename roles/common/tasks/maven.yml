@@ -32,7 +32,7 @@
 - name: mysql_schema_setup
   ansible.builtin.import_role:
     name: common
-    tasks_from: mysql_schema_setup.yml
+    tasks_from: mysql_schema_Setup.yml
 
 - name: systemd_setup
   ansible.builtin.import_role:
