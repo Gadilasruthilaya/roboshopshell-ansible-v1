@@ -1,5 +1,5 @@
 
-- name: Configure config file
+- name: copy mongo repo file
   ansible.builtin.copy:
     src: mongo.repo
     dest: /etc/yum.repos.d/mongo.repo
