@@ -1,5 +1,5 @@
   - name: Configure config file
-    ansible.builtin.template:
+    ansible.builtin.copy:
       src: mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
     
@@ -15,11 +15,11 @@
       replace: '0.0.0.0'
 
   - name: Enabling  mongodb
-    ansible.builtin.service:
+    ansible.builtin.systemd:
       name: mongod
       enabled: yes
   
   - name: Restart mongodb
-    ansible.builtin.service:
+    ansible.builtin.systemd:
       name: mongod
       state: restarted

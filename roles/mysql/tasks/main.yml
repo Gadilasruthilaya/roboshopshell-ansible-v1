@@ -19,7 +19,7 @@
   ansible.builtin.shell: yum module disable mysql -y
 
 - name: copy mysql repo file
-  ansible.builtin.template:
+  ansible.builtin.copy:
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
@@ -29,7 +29,7 @@
     state: installed
 
 - name: start mysql server
-  ansible.builtin.service:
+  ansible.builtin.systemd:
     name: mysqld
     state: restarted
     enabled: yes
