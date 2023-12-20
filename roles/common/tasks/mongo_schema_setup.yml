@@ -1,5 +1,4 @@
 
-
 - name: Configure config file
   ansible.builtin.copy:
     src: mongo.repo
