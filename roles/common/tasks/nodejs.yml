@@ -17,7 +17,7 @@
 
 - name: print hello world
   ansible.builtin.debug:
-    msg: {{ load_schema }}
+    msg: -"{{ load_schema }}"
   when: load_schema
 
 - name: Include mongo_schema_setup.yml
