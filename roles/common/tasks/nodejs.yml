@@ -15,6 +15,11 @@
   args:
     chdir: /app
 
+- name: print hello world
+  ansible.builtin.debug:
+    msg: "hello world"
+  when: load_schema
+
 - name: Include mongo_schema_setup.yml
   ansible.builtin.import_tasks:
     file: mongo_schema_setup.yml
