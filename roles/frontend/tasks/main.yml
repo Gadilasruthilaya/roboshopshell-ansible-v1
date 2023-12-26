@@ -24,10 +24,10 @@
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
 
-  - name: Configure elastic repo file
-    ansible.builtin.template:
-      src: elastic.repo
-      dest: /etc/yum.repos.d/elastic.repo
+#  - name: Configure elastic repo file
+#    ansible.builtin.template:
+#      src: elastic.repo
+#      dest: /etc/yum.repos.d/elastic.repo
 
 #  - name: install filebeat
 #    ansible.builtin.shell: yum install filebeat -y
