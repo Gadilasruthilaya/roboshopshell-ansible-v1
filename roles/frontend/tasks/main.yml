@@ -29,8 +29,8 @@
       src: elastic.repo
       dest: /etc/yum.repos.d/elastic.repo
 
-  - name: install filebeat
-    ansible.builtin.shell: yum install filebeat -y
+#  - name: install filebeat
+#    ansible.builtin.shell: yum install filebeat -y
 
 
   - name: Configure config file
