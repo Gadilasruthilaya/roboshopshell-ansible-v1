@@ -1,5 +1,5 @@
 - name: setup logstash config file
-  ansible.builtin.templates:
+  ansible.builtin.template:
     src: logstash.conf
     des: /etc/logstash/conf.d/logstash.conf
 
