@@ -1,7 +1,7 @@
 - name: setup logstash config file
   ansible.builtin.template:
     src: logstash.conf
-    des: /etc/logstash/conf.d/logstash.conf
+    dest: /etc/logstash/conf.d/logstash.conf
 
 - name: restart service
   ansible.builtin.systemd:
