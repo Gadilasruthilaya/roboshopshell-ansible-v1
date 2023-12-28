@@ -16,5 +16,5 @@
 - name: restart filebeat
   ansible.builtin.service:
     service: filebeat
-    status: restarted
+    state: restarted
     enabled: yes
