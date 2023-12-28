@@ -14,7 +14,7 @@
     dest: /etc/filebeat/filebeat.yml
 
 - name: restart filebeat
-  ansible.builtin.systemd:
+  ansible.builtin.service:
     service: filebeat
     status: restarted
     enabled: yes
