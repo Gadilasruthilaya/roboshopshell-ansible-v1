@@ -165,11 +165,13 @@ output.logstash:
 
 # ================================= Processors =================================
 processors:
-  - add_host_metadata:
-      when.not.contains.tags: forwarded
-  - add_cloud_metadata: ~
-  - add_docker_metadata: ~
-  - add_kubernetes_metadata: ~
+  - drop_fields:
+      fields: ["agent.ephemeral.id","agent.hostname","agent_id","agent_name","agent_version","agent_type"]
+#  - add_host_metadata:
+ #     when.not.contains.tags: forwarded
+#  - add_cloud_metadata: ~
+ # - add_docker_metadata: ~
+ # - add_kubernetes_metadata: ~
 
     # ================================== Logging ===================================
 
