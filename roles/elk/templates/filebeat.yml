@@ -166,7 +166,7 @@ output.logstash:
 # ================================= Processors =================================
 processors:
   - drop_fields:
-      fields: ["agent.ephemeral.id","agent.hostname","agent_id","agent_name","agent_version","agent_type"]
+      fields: ["agent.ephemeral_id","agent.hostname","agent.id","agent.name","agent.version","agent.type"]
 #  - add_host_metadata:
  #     when.not.contains.tags: forwarded
 #  - add_cloud_metadata: ~
