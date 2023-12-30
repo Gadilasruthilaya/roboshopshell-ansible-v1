@@ -41,7 +41,9 @@
       name: elk
       tasks_from: filebeat.yml
 
+  - name: install node-exporter
+    ansible.builtin.import_role:
+      name: prometheus
+      tasks_from: node-exporter.yml
 
-  - name: Install prometheus node exporter
-    ansible.builtin.shell: sudo labauto prometheus-node-exporter
 
