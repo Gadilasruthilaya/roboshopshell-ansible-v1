@@ -24,25 +24,12 @@
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
 
-#  - name: Configure elastic repo file
-#    ansible.builtin.template:
-#      src: elastic.repo
-#      dest: /etc/yum.repos.d/elastic.repo
-
-#  - name: install filebeat
-#    ansible.builtin.shell: yum install filebeat -y
-
 
   - name: Configure config file
     ansible.builtin.template:
       src: roboshop.conf
       dest: /etc/nginx/default.d/roboshop.conf
 
-#  - name: Restart the nginx server
-#    ansible.builtin.service:
-#      name: nginx
-#      state: restarted
-      
   - name: Enabling  the nginx server
     ansible.builtin.systemd:
       name: nginx
@@ -53,4 +40,8 @@
     ansible.builtin.import_role:
       name: elk
       tasks_from: filebeat.yml
+
+
+  - name: Install prometheus node exporter
+    ansible.builtin.shell: sudo labauto prometheus-node-exporter
 

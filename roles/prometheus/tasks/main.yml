@@ -1,0 +1,11 @@
+- name: setup prometheus file
+  ansible.builtin.template:
+    src: prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
+
+
+- name: restart service
+  ansible.builtin.systemd:
+    service: prometheus
+    state: restarted
+    enabled: yes
