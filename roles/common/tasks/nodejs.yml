@@ -16,6 +16,11 @@
   args:
     chdir: /app
 
+- name: download documentdb pem file from a path
+  ansible.builtin.get_url:
+    url: https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem
+    dest: /app/rds-combined-ca-bundle.pem
+
 - name: print hello world
   ansible.builtin.debug:
     msg: -"{{ load_schema }}"
